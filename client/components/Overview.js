@@ -31,7 +31,6 @@ function Overview() {
                 limit: 5,
             }
         }).then((response) => {
-            console.log(response.data);
             setTopArtists(response.data.items);
         }).catch(error => console.log(error));
     },[])

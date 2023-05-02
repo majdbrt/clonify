@@ -76,7 +76,7 @@ function Header() {
     return (
 
         <div style={{
-            backgroundColor: windowYScroll < 50 ? `rgba(${overViewColor?.[0]},${overViewColor?.[1]},${overViewColor?.[2]},1)` : windowYScroll >= 50 && windowYScroll < 150 ? `rgba(${overViewColor?.[0]},${overViewColor?.[1]},${overViewColor?.[2]},0.5)` : `rgba(${overViewColor?.[0]},${overViewColor?.[1]},${overViewColor?.[2]},1)`
+            backgroundColor: windowYScroll < 50 ? `rgba(${overViewColor?.[0]},${overViewColor?.[1]},${overViewColor?.[2]},1)` : windowYScroll >= 50 && windowYScroll < 150 ? `rgba(${overViewColor?.[0]},${overViewColor?.[1]},${overViewColor?.[2]},0.5)` : `#1d0d46`
         }} className={` flex sticky top-0 h-16 pl-8 pr-8 z-10 w-full justify-between `}>
             <div className="flex h-full    ">
                 <Image className="my-auto cursor-no-drop mr-1 opacity-50" alt="" src={backIcon} width={36} />
