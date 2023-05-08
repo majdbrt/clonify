@@ -36,11 +36,10 @@ instance.interceptors.response.use((response) => {
             return instance.request(originalRequest);
         } catch (err) {
           
-            //window.location.href = "/login";
             return Promise.reject(err);
         }
 
-    }// if\
+    }// if
   
    return Promise.reject(error);
 })
@@ -53,7 +52,6 @@ export async function refreshToken() {
             client_id: process.env.NEXT_PUBLIC_CLIENT_ID,
             refresh_token: refresh_token
         });
-
 
         const response = await fetch('https://accounts.spotify.com/api/token', {
             method: 'POST',

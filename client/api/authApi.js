@@ -37,14 +37,10 @@ authApi.interceptors.response.use((response) => {
             return authApi.request(originalRequest);
         } catch (err) {
       
-           //await localStorage.removeItem('access_token');
-            //window.location.href = "/login";
-      
             return Promise.reject(err);
         }
 
-    }// if\
-   // await localStorage.removeItem('access_token');
+    }// if
     window.location.href = "/login";
     return Promise.reject(error);
 })
@@ -74,15 +70,10 @@ export async function refreshToken() {
                 if(data?.access_token && data?.refresh_token){
                     localStorage.setItem('access_token', data.access_token);
                     localStorage.setItem('refresh_token', data.refresh_token);
-                }
-                
-                
+                }// if
             })
             .catch(error => {
-               
-              //  localStorage.removeItem('access_token');
-                //localStorage.removeItem('refresh_token');
-             //   window.location.href = "/login";
+
             });
 
     }// if

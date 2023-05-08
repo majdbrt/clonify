@@ -22,7 +22,7 @@ export async function generateCodeChallenge(codeVerifier) {
     const digest = await window.crypto.subtle.digest('SHA-256', data);
 
     return base64encode(digest);
-}
+}// generateCodeChallenge
 
 
 
