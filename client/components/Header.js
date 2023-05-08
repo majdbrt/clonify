@@ -5,7 +5,6 @@ import Image from 'next/image';
 import useStore from "../store/useStore";
 import authApi from "../api/authApi";
 import dropdownIcon from '../public/images/dropdown-icon.png';
-import instance from "../api/instance";
 import profileIcon from '../public/images/profile-icon.png';
 import HeaderPopup from "./HeaderPopup";
 
@@ -34,6 +33,7 @@ function Header() {
             });
     }, []);
 
+    // change the opacity of the header with scrolling
     useEffect(() => {
 
         if (windowYScroll < 100) {
@@ -85,8 +85,3 @@ function Header() {
 }
 
 export default Header;
-
-/*
-bg-[#1d0d46]
-purple
-*/

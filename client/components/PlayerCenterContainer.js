@@ -33,7 +33,7 @@ function PlayerCenterContainer() {
                 ...prev,
                 position: event.clientX - left
             }));
-        }
+        }// if
 
     }
 
@@ -125,23 +125,25 @@ function PlayerCenterContainer() {
 
                 </div>
             </div>
-            {playback.sliderHover ?
-                <div onMouseEnter={() => {
-                    setPlayback(prev => ({
-                        ...prev,
-                        sliderHover: true
-                    }))
-                }} onMouseLeave={() => {
-                    setPlayback(prev => ({
-                        ...prev,
-                        sliderHover: false
-                    }))
-                }} onDrag={handleDrag} style={{
-                    left: `${playback.trackBallPosition}px`,
-                    top: `64.5px`
-                }} className="absolute w-3 bg-white h-3 rounded-full"></div>
-                :
-                <></>}
+            {
+                playback.sliderHover ?
+                    <div onMouseEnter={() => {
+                        setPlayback(prev => ({
+                            ...prev,
+                            sliderHover: true
+                        }))
+                    }} onMouseLeave={() => {
+                        setPlayback(prev => ({
+                            ...prev,
+                            sliderHover: false
+                        }))
+                    }} onDrag={handleDrag} style={{
+                        left: `${playback.trackBallPosition}px`,
+                        top: `64.5px`
+                    }} className="absolute w-3 bg-white h-3 rounded-full"></div>
+                    :
+                    <></>
+            }
         </div>
     );
 }

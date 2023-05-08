@@ -34,12 +34,11 @@ function PlayerRightContainer() {
                 ...prev,
                 position: event.clientX - left
             }));
-        }
+        }// if
 
-    }
+    }// handleDrag
 
     useEffect(() => {
-        console.log(whiteVolumeSlider?.current?.getBoundingClientRect().right)
         setIcons(prev => ({
             ...prev,
             trackBallPosition: whiteVolumeSlider?.current?.clientWidth
@@ -234,6 +233,5 @@ function PlayerRightContainer() {
         </div>
     );
 }
-
 
 export default PlayerRightContainer;

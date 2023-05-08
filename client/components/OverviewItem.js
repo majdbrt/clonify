@@ -13,6 +13,8 @@ function OverviewItem(props) {
 
         (state) => [state.overViewColor, state.setOverViewColor]
     );
+
+    // colorThief gets the dominant color of the overview item image.
     const colorThief = new ColorThief();
     const image = new Image(360, 360);
 
@@ -25,8 +27,7 @@ function OverviewItem(props) {
                 return x * 5 / 6;
             })
             setColor(adjustedColor);
-        }
-
+        }// if
     }
 
     return (

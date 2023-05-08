@@ -8,13 +8,11 @@ import PlayerRightContainer from "./PlayerRightContainer";
 
 function Player() {
     const [song, setSong] = useState();
-    const [playback, setPlayback] = useState();
     useEffect(() => {
         instance.get('me/player')
             .then((response) => {
+                // Load the song currently playing by devices logged into official Spotify site
                 setSong(response?.data?.item);
-                console.log(response?.data);
-                setPlayback()
             }).catch((error) => {
                 console.log(error);
             })
@@ -22,7 +20,6 @@ function Player() {
 
     return (
         <div className="w-full h-[90px] bg-zinc-900 px-4 flex ">
-            {/**/}
             <PlayerLeftContainer song={song}/>
             <PlayerCenterContainer />
             <PlayerRightContainer/>
@@ -32,11 +29,3 @@ function Player() {
 }
 
 export default Player;
-
-
-/*
-spotify green
-1ed760
-
-
-*/

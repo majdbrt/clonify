@@ -3,6 +3,7 @@ import loveIconGreen from '../public/images/love-icon-green.png';
 import loveIconWhite from '../public/images/love-icon-white.png';
 import pipIcon from '../public/images/pip-icon.png';
 import Image from "next/image";
+
 function PlayerLeftContainer(props){
     const song = props.song;
     const [liked, setLiked] = useState(false);

@@ -19,7 +19,7 @@ import installIcon from '../public/images/install-icon.png';
 
 
 function SidePane() {
-    const [spWidth, setSPWidth] = useState(0);
+    const [spWidth, setSPWidth] = useState(300);
 
     useEffect(() => {
         setSPWidth(localStorage.getItem('spWidth'));
@@ -28,24 +28,24 @@ function SidePane() {
     function handleDrag(event) {
         if (event.clientX <= 384) {
             setSPWidth(event.clientX);
-        }
+        }// if
         else {
             setSPWidth(384);
-        }
-    }
+        }// else
+    }// handleDrag
 
     function handleDragEnd(event) {
 
         if (event.screenX <= 384) {
             setSPWidth(event.clientX);
             localStorage.setItem('spWidth', event.clientX.toString());
-        }
+        }// if
         else {
 
             setSPWidth(384);
             localStorage.setItem('spWidth', '384');
-        }
-    }
+        }// else
+    }// handleDragEnd
 
     return (
         <div className="h-full flex  ">
