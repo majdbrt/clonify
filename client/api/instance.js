@@ -1,7 +1,6 @@
 
 import axios from "axios";
 
-
 const instance = axios.create({
     baseURL: 'https://api.spotify.com/v1/',
     headers: { 
@@ -11,9 +10,8 @@ const instance = axios.create({
 
 instance.interceptors.request.use(async (config) => {
     const access_token = await localStorage.getItem('access_token');
-    console.log(access_token)
-
-    config.headers.Authorization = 'Bearer ' + localStorage.getItem('access_token');
+   
+    config.headers.Authorization = 'Bearer ' + access_token;
 
     return config;
 },
@@ -27,13 +25,14 @@ instance.interceptors.response.use((response) => {
     return response;
 }, async (error) => {
     const originalRequest = error.config;
-
-    if (error.response.status === 401 && !originalRequest._retry) {
+    const refresh_token = await localStorage.getItem('refresh_token');
+    if ( !originalRequest._retry && refresh_token) {
         originalRequest._retry = true;
         try {
-            console.log('refreshing the token');
+            
             await refreshToken();
-            originalRequest.headers.Authorization = 'Bearer ' + localStorage.getItem('access_token');
+            const access_token = await localStorage.getItem('access_token');
+            originalRequest.headers.Authorization = 'Bearer ' + access_token;
             return instance.request(originalRequest);
         } catch (err) {
           
@@ -43,7 +42,7 @@ instance.interceptors.response.use((response) => {
 
     }// if\
   
-    return Promise.reject(error);
+   return Promise.reject(error);
 })
 
 export async function refreshToken() {
@@ -64,17 +63,17 @@ export async function refreshToken() {
             body: body
         })
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('HTTP status ' + response.status);
-                }
+               
                 return response.json();
             })
             .then(data => {
-                localStorage.setItem('access_token', data.access_token);
-                localStorage.setItem('refresh_token', data.refresh_token);
+                if(data.access_token && data.refresh_token){
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('refresh_token', data.refresh_token);
+                }
             })
             .catch(error => {
-                console.error('Error:', error);
+                
             });
 
     }// if
