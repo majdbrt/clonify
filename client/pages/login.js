@@ -17,7 +17,7 @@ export default function Login() {
 
 
     useEffect(()=>{
-     
+        // check if the user is already logged in, if so redirect to the home page automatically
             instance.get('me')
             .then( (response) => {
                 
@@ -35,7 +35,7 @@ export default function Login() {
         return ()=>{
             setIsLoading(false);
         }
-    },[])
+    },[]);
 
     useEffect(() => {
         if (error) {

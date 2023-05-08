@@ -1,15 +1,16 @@
 import { useRouter } from 'next/router';
 import loadingIcon from '../public/images/loading-icon.png';
 import Image from 'next/image';
-import { useEffect } from 'react';
+
+// After the user log in through Spotify, the callback function will handle the response.
+// if it is an approval response, the callback function will request an access token and a refresh token
 
 const callback = () => {
     const router = useRouter();
 
     const { error, code, state } = router.query;
-    //console.log(code);
+ 
     if (error) {
-        // console.log("denied", error);
         router.push('/login?error=access_denied');
     }
     else {

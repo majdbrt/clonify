@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/globals.css';
 import NoSSR from '../components/NoSSR';
 import { Sarabun } from 'next/font/google';
-
+import Head from 'next/head';
 
 const montserrat = Sarabun({
       subsets: ['latin'],
@@ -12,6 +12,9 @@ const montserrat = Sarabun({
 export default function App({ Component, pageProps }) {
       return (
             <main className={montserrat.className}>
+                  <Head>
+                        <title>Clonify</title>
+                  </Head>
                   <NoSSR>
                         <Component {...pageProps} />
                   </NoSSR>
