@@ -1,4 +1,4 @@
-
+// instance will try to refresh the access token given a valid refresh token exists.
 import axios from "axios";
 
 const instance = axios.create({

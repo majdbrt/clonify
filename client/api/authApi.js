@@ -1,6 +1,6 @@
+// AuthAPI will refresh the access token if it is expired and if the refresh token is also invalid, it will log the user out
 
 import axios from "axios";
-
 
 const authApi = axios.create({
     baseURL: 'https://api.spotify.com/v1/',
@@ -45,7 +45,7 @@ authApi.interceptors.response.use((response) => {
 
     }// if\
    // await localStorage.removeItem('access_token');
-  window.location.href = "/login";
+    window.location.href = "/login";
     return Promise.reject(error);
 })
 

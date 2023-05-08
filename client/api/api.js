@@ -1,3 +1,4 @@
+// generateRandomString and generateCodeChallenge are two methods required for the PKCE flow as documented by Spotify API documentations
 export function generateRandomString(length) {
     let text = '';
     let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
