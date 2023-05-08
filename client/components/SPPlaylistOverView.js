@@ -3,10 +3,15 @@ import authApi from "../api/authApi";
 import instance from "../api/instance";
 import SPMainLink from "./SPMainLink";
 import SPPlaylistItem from "./SPPlaylistItem";
+import useStore from "../store/useStore";
 
 function SPPlaylistOverview() {
     const [isFocused, setIsFocused] = useState(true);
     const [playlists, setPlaylists] = useState(null);
+    const [ playlistsLoading, setPlaylistsLoading] = useStore(
+
+        (state) => [state.playlistsLoading, state.setPlaylistsLoading]
+    );
 
     useEffect(() => {
         instance.get('me/playlists', {
@@ -15,9 +20,9 @@ function SPPlaylistOverview() {
                 offset: 0
             }
         }).then((response) => {
-            const playlists = response.data.items;
-            console.log(playlists);
+            const playlists = response?.data?.items;
             setPlaylists(playlists);
+            setPlaylistsLoading();
         });
     }, []);
 

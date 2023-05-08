@@ -1,24 +1,42 @@
-import { Old_Standard_TT } from "next/font/google";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-function Player(){
+import instance from "../api/instance";
+import PlayerCenterContainer from "./PlayerCenterContainer";
+import PlayerLeftContainer from './PlayerLeftContainer';
+import PlayerRightContainer from "./PlayerRightContainer";
 
-    return(
-        <div className="w-full h-[90px] bg-zinc-900">
-            {/**/ }
-            <div>
-            
 
-            </div>
-            <div>
+function Player() {
+    const [song, setSong] = useState();
+    const [playback, setPlayback] = useState();
+    useEffect(() => {
+        instance.get('me/player')
+            .then((response) => {
+                setSong(response?.data?.item);
+                console.log(response?.data);
+                setPlayback()
+            }).catch((error) => {
+                console.log(error);
+            })
+    }, []);
 
-            </div>
-            <div>
-
-            </div>
+    return (
+        <div className="w-full h-[90px] bg-zinc-900 px-4 flex ">
+            {/**/}
+            <PlayerLeftContainer song={song}/>
+            <PlayerCenterContainer />
+            <PlayerRightContainer/>
         </div>
     );
 
 }
 
 export default Player;
+
+
+/*
+spotify green
+1ed760
+
+
+*/

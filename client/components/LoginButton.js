@@ -7,7 +7,7 @@ function LoginButton() {
 
         generateCodeChallenge(codeVerifier).then(codeChallenge => {
             const state = generateRandomString(16);
-            const scope = 'user-read-private user-read-email playlist-read-private user-top-read user-library-read user-read-recently-played';
+            const scope = 'user-read-private user-read-email playlist-read-private user-top-read user-library-read user-read-recently-played user-read-playback-state user-modify-playback-state streaming';
           
             localStorage.setItem('code_verifier', codeVerifier);
           

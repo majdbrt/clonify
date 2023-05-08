@@ -14,43 +14,31 @@ function OverviewItem(props) {
         (state) => [state.overViewColor, state.setOverViewColor]
     );
     const colorThief = new ColorThief();
+    const image = new Image(360, 360);
 
-    
- const image = new Image(360, 360);
+    image.onload = async function () {
+        if (image.complete && !props.like) {
+            const colorArr = colorThief.getColor(image);
 
- image.onload = async function (){
-    if(image.complete && !props.like){
-        const colorArr = colorThief.getColor(image);
-        const adjustedColor = colorArr.map((x)=>{
-            return x*5/6;
-        })
-        setColor( adjustedColor);
-        
+            // make color sligthly darker
+            const adjustedColor = colorArr.map((x) => {
+                return x * 5 / 6;
+            })
+            setColor(adjustedColor);
+        }
+
     }
-    
- }
 
     return (
         <div onMouseEnter={async () => {
             setIsFocused(true);
-            if(props.like){
-                setOverViewColor([29,13,70]);
-            }
-            else{
+            if (props.like) {
+                setOverViewColor([29, 13, 70]);
+            }// if
+            else {
                 setOverViewColor(color);
-            }
-            
-            console.log(color);
-            // Make sure image is finished loading
-          
-                /*
-                if (imageRef) {
-                    const color = colorThief.getColor(imageRef);
-                    console.log(color);
-    
-                }
-    */
-            }
+            }// else
+        }
         } onMouseLeave={() => setIsFocused(false)} className={`flex ${window?.innerWidth < 1190 ? 'h-16' : 'h-20'}  relative`}>
             {props.like ?
                 <div style={{
@@ -58,12 +46,12 @@ function OverviewItem(props) {
                     background: 'rgb(29,13,70)',
                     background: 'linear-gradient(135deg, rgba(67,26,182,1) 0%, rgba(121,141,137,1) 89%)'
                 }} className={`flex  ${window?.innerWidth < 1190 ? 'w-16' : 'w-1/5'}  rounded-l  `}>
-                    <NextImage  className={`m-auto `} width={58} src={props.imgSrc} alt="" />
+                    <NextImage className={`m-auto `} width={58} src={props.imgSrc} alt="" />
                 </div> :
-                <img ref={imageRef} onLoad={async ()=>{
+                <img ref={imageRef} onLoad={async () => {
                     image.src = props.imgSrc;
                     image.crossOrigin = 'Anonymous';
-                    
+
                 }} className={`  ${window?.innerWidth < 1190 ? 'w-16' : 'w-1/5'}  rounded-l-sm `} width={30} src={props.imgSrc} alt="" />
             }
 
@@ -77,8 +65,6 @@ function OverviewItem(props) {
                         <NextImage className="m-auto pl-1" src={playIcon} width={26} alt="" />
                     </div>
                 }
-
-
             </div>
         </div>
     );

@@ -26,32 +26,25 @@ function SidePane() {
     }, [])
 
     function handleDrag(event) {
-
-
-        if (event.screenX <= 384) {
-            setSPWidth(event.screenX);
+        if (event.clientX <= 384) {
+            setSPWidth(event.clientX);
         }
         else {
-
             setSPWidth(384);
-
         }
     }
 
     function handleDragEnd(event) {
 
-
         if (event.screenX <= 384) {
-            setSPWidth(event.screenX);
-            localStorage.setItem('spWidth', event.screenX.toString());
+            setSPWidth(event.clientX);
+            localStorage.setItem('spWidth', event.clientX.toString());
         }
         else {
 
             setSPWidth(384);
             localStorage.setItem('spWidth', '384');
-
         }
-
     }
 
     return (
