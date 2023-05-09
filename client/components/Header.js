@@ -66,15 +66,15 @@ function Header() {
                 <Image className="my-auto cursor-no-drop mr-1 opacity-50" alt="" src={backIcon} width={36} />
                 <Image className="my-auto cursor-no-drop  opacity-50" alt="" src={forwardIcon} width={36} />
             </div>
-            <div ref={headerProfile}  className="rounded-full h-8 w-32 flex my-auto    bg-neutral-900 hover:bg-zinc-800">
+            <div ref={headerProfile}  className="rounded-full h-8 w-fit flex my-auto bg-neutral-900 hover:bg-zinc-800">
                 {
                     user?.profilePic?.url ?
                         <img className="rounded-full mx-0.5 my-auto w-7" src={user?.profilePic?.url} alt="" />
                         :
-                        <Image src={profileIcon} className="w-7 p-1 h-7 m-auto bg-[#282828] rounded-full" alt="" />
+                        <Image src={profileIcon} className="w-7 p-1 h-7 mx-0.5 my-auto bg-[#282828] rounded-full" alt="" />
                 }
 
-                <div className=" mx-auto text-white mt-1 text-sm font-extrabold">{user?.name}</div>
+                <div className=" mx-3 text-center text-white mt-1 text-sm font-extrabold">{user?.name}</div>
                 <Image className="h-3.5 w-3.5 my-auto mr-2" src={dropdownIcon} alt="" />
             </div>
             <HeaderPopup />
