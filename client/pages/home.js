@@ -3,7 +3,6 @@ import MainWindow from '../components/MainWindow';
 import SidePane from '../components/SidePane';
 import Player from '../components/Player';
 import React from 'react';
-import LandingPageFooter from '../components/LandingPageFooter';
 
 export default function Home() {
 
@@ -14,7 +13,8 @@ export default function Home() {
         <SidePane />
         <MainWindow />
       </div>
-    <LandingPageFooter/>
+      <Player/>
+
     </div>
   );
 

@@ -80,7 +80,11 @@ function MainWindow() {
                         </>
                         :
                         <>
-                            <MainWindowSection sectionName="Your albums" type={'album'} content={albums} />
+                            {
+                                albums.length? 
+                                <MainWindowSection sectionName="Your albums" type={'album'} content={albums} />
+                                : null
+                            }
 
                             <MainWindowSection sectionName="Featured playlists" type='playlist' content={playlists} />
                         </>

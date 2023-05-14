@@ -45,7 +45,7 @@ function HeaderPopup() {
     return (
        
         <div ref={popup} style={{
-            top: `${headerProfileElement?.offsetTop + 40}px`,
+            top: `${headerProfileElement?.offsetTop + 45}px`,
             left: `${headerProfileElement?.offsetLeft - 50}px`
         }} className={`absolute flex flex-col ${isVisible? '' : 'hidden'} bg-neutral-800  w-44 `}>
             <div className="flex m-1 flex-1 justify-between hover:bg-neutral-700">
