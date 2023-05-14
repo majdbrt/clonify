@@ -12,7 +12,7 @@ function MainWindowSection(props) {
             </div>
             <div className={`grid mt-6 grid-rows-1 gap-6 w-full h-64 grid-cols-6`}>
                 {
-                    arr?.map(elem => <MainWindowSectionItem key={type === 'album' ? elem.album.id : type==='playlist'? elem.id : null} imgSrc={type === 'album' ? elem.album.images?.[0].url : type==='playlist'? elem.images?.[0].url : null} name={type === 'album' ? elem.album.name : type==='playlist'? elem.name : null} artists={type === 'album' ? elem.album.artists?.[0].name : type==='playlist'? elem.artists?.[0].name : null} detail={type === 'album' ? elem.album : type==='playlist'? elem : null} />)
+                    arr?.map(elem => <MainWindowSectionItem key={type === 'album' ? elem?.album?.id : type==='playlist'? elem?.id : null} imgSrc={type === 'album' ? elem?.album?.images?.[0].url : type==='playlist'? elem?.images?.[0].url : null} name={type === 'album' ? elem?.album?.name : type==='playlist'? elem?.name : null} artists={type === 'album' ? elem?.album?.artists?.[0].name : type==='playlist'? elem?.artists?.[0].name : null} detail={type === 'album' ? elem?.album : type==='playlist'? elem : null} />)
                    }
             </div>
 

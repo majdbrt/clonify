@@ -19,7 +19,7 @@ function Player() {
     }, []);
 
     return (
-        <div className="w-full h-[90px] bg-zinc-900 px-4 flex ">
+        <div className="w-full  bg-zinc-900 px-4 flex ">
             <PlayerLeftContainer song={song}/>
             <PlayerCenterContainer />
             <PlayerRightContainer/>

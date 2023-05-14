@@ -12,38 +12,28 @@ import speakerIcon from '../public/images/speaker-icon.png';
 import speakerIconHighlighted from '../public/images/speaker-icon-highlighted.png';
 
 function PlayerRightContainer() {
-    const whiteVolumeSlider = useRef();
     const parentVolumeSlider = useRef();
     const [icons, setIcons] = useState({
         mic: false,
         stack: false,
         ipod: false,
         expand: false,
-        position: 50,
         sliderHover: false,
-        trackBallPosition: 0
+        sliderPosition: 50,
     });
 
     function handleDrag(event) {
+      
+        const parentElem = parentVolumeSlider?.current?.getBoundingClientRect();
 
-        const left = whiteVolumeSlider?.current?.getBoundingClientRect()?.left
-        const parentSlider = parentVolumeSlider?.current?.getBoundingClientRect();
-
-        if (event.clientX <= parentSlider.right && event.clientX >= parentSlider.left ) {
-            setIcons(prev => ({
-                ...prev,
-                position: event.clientX - left
-            }));
-        }// if
-
-    }// handleDrag
-
-    useEffect(() => {
         setIcons(prev => ({
             ...prev,
-            trackBallPosition: whiteVolumeSlider?.current?.clientWidth
-        }))
-    }, [icons.position]);
+            sliderPosition: event.clientX <= parentElem.left  ? 0 : event.clientX >= parentElem.right ? parentElem.right - parentElem.left : event.clientX - parentElem.left
+        }));
+  
+    }// handleDrag
+
+
 
     return (
         <div className=" overflow-hidden flex h-14 my-auto ">
@@ -162,42 +152,31 @@ function PlayerRightContainer() {
                             }} src={speakerIcon} className="w-4 h-4 " alt="" />
                     }
                 </div>
-                <div className="my-auto w-20 flex-1 px-1 relative">
-                    <div ref={parentVolumeSlider} onMouseEnter={() => {
-                        setIcons(prev => ({
-                            ...prev,
-                            sliderHover: true
-                        }));
-                    }} onMouseLeave={() => {
-                        setIcons(prev => ({
-                            ...prev,
-                            sliderHover: false
-                        }));
-                    }} className=" mx-auto w-full my-auto  h-[3px] bg-zinc-600 rounded-full">
-                        <div ref={whiteVolumeSlider} style={{
-                            width: `${icons.position}px`
-                        }} className={` h-full bg-white hover:bg-[#1ed760] ${icons.sliderHover ? 'bg-[#1ed760]' : ''} rounded-full`}>
-                        </div>
+                <div onMouseEnter={() => {
+                setIcons(prev => ({
+                    ...prev,
+                    sliderHover: true
+                }));
+            }} onMouseLeave={() => {
+                setIcons(prev => ({
+                    ...prev,
+                    sliderHover: false
+                }));
+            }} className=" w-24 flex px-2 h-6 my-auto ">
+                <div ref={parentVolumeSlider} className="relative rounded-full w-full h-[3px] mx-auto my-auto bg-zinc-600">
+                    <div style={{
+                        width:`${icons.sliderPosition}px`
+                    }} className={`${icons.sliderHover ? 'bg-[#1ed760]' : 'bg-white'} rounded-full h-[3px]`}>
+
                     </div>
-                    {
-                        icons.sliderHover ?
-                            <div onMouseEnter={() => {
-                                setIcons(prev => ({
-                                    ...prev,
-                                    sliderHover: true
-                                }))
-                            }} onMouseLeave={() => {
-                                setIcons(prev => ({
-                                    ...prev,
-                                    sliderHover: false
-                                }))
-                            }} onDrag={handleDrag} style={{
-                                left: `${icons.trackBallPosition}px`,
-                                top: `-5px`
-                            }} className="absolute w-3 bg-white h-3 rounded-full"></div>
-                            :
-                            <></>}
+                    <div onDrag={handleDrag} style={{
+                        left: `${icons.sliderPosition - 6}px`,
+                        top: "-6px"
+                    }} onDragEnd={handleDrag} className={`absolute ${icons.sliderHover ? '' : 'hidden'} h-3 w-3 bg-white rounded-full`}>
+
+                    </div>
                 </div>
+            </div>
 
             </div>
 

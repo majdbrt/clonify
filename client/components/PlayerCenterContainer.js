@@ -5,50 +5,38 @@ import nextIcon from '../public/images/next-icon.png';
 import nextIconHighlighted from '../public/images/next-icon-highlighted.png';
 import shuffleIcon from '../public/images/shuffle-icon.png';
 import shuffleIconGreen from '../public/images/shuffle-icon-green.png';
-import repeatIcon from '../public/images/shuffle-icon.png';
+import repeatIcon from '../public/images/repeat-icon.png';
 import repeatIconGreen from '../public/images/shuffle-icon-green.png';
 import playIcon from '../public/images/play-icon.png';
 import Image from "next/image";
 
 function PlayerCenterContainer() {
-    const whiteTrackSlider = useRef();
     const parentTrackSlider = useRef();
     const [playback, setPlayback] = useState({
         shuffle: false,
         repeat: false,
-        position: 50,
-        sliderHover: false,
+        sliderPosition: 50,
         prevHover: false,
         nextHover: false,
-        trackBallPosition: 0
+        sliderHover: false
+
     });
 
     function handleDrag(event) {
+      
+        const parentElem = parentTrackSlider?.current?.getBoundingClientRect();
 
-        const left = whiteTrackSlider?.current?.getBoundingClientRect()?.left
-        const parentSlider = parentTrackSlider?.current?.getBoundingClientRect();
-
-        if (event.clientX <= parentSlider.right && event.clientX >= parentSlider.left) {
-            setPlayback(prev => ({
-                ...prev,
-                position: event.clientX - left
-            }));
-        }// if
-
-    }
-
-    useEffect(() => {
         setPlayback(prev => ({
             ...prev,
-            trackBallPosition: whiteTrackSlider?.current?.clientWidth
-        }))
-    }, [playback.position])
-
+            sliderPosition: event.clientX <= parentElem.left  ? 0 : event.clientX >= parentElem.right ? parentElem.right - parentElem.left : event.clientX - parentElem.left
+        }));
+  
+    }// handleDrag
 
     return (
         <div onClick={() => {
 
-        }} className="relative w-[500px] h-full  flex flex-col py-4  mx-auto px-2 overflow-hidden">
+        }} className=" w-[500px] h-full  flex flex-col  my-auto  mx-auto px-2 overflow-hidden">
             <div className={` flex my-auto  mx-auto justify-between`}>
                 <Image className="my-auto mx-2.5" src={shuffleIcon} width={19} alt="" />
                 {
@@ -108,7 +96,7 @@ function PlayerCenterContainer() {
                 }
                 <Image className="my-auto mx-2.5" src={repeatIcon} width={19} alt="" />
             </div>
-            <div ref={parentTrackSlider} onMouseEnter={() => {
+            <div onMouseEnter={() => {
                 setPlayback(prev => ({
                     ...prev,
                     sliderHover: true
@@ -118,32 +106,21 @@ function PlayerCenterContainer() {
                     ...prev,
                     sliderHover: false
                 }));
-            }} className="w-full mx-auto  my-auto  h-[3px] bg-zinc-600 rounded-full">
-                <div ref={whiteTrackSlider} style={{
-                    width: `${playback.position}px`
-                }} className={` h-full bg-white hover:bg-[#1ed760] ${playback.sliderHover ? 'bg-[#1ed760]' : ''} rounded-full`}>
+            }} className=" w-full flex px-2 h-6  ">
+                <div ref={parentTrackSlider} className="relative rounded-full w-full h-[3px] mx-auto mt-1 bg-zinc-600">
+                    <div style={{
+                        width:`${playback.sliderPosition}px`
+                    }} className={`${playback.sliderHover ? 'bg-[#1ed760]' : 'bg-white'} rounded-full h-[3px]`}>
 
+                    </div>
+                    <div onDrag={handleDrag} style={{
+                        left: `${playback.sliderPosition - 6}px`,
+                        top: "-6px"
+                    }} onDragEnd={handleDrag} className={`absolute ${playback.sliderHover ? '' : 'hidden'} h-3 w-3 bg-white rounded-full`}>
+
+                    </div>
                 </div>
             </div>
-            {
-                playback.sliderHover ?
-                    <div onMouseEnter={() => {
-                        setPlayback(prev => ({
-                            ...prev,
-                            sliderHover: true
-                        }))
-                    }} onMouseLeave={() => {
-                        setPlayback(prev => ({
-                            ...prev,
-                            sliderHover: false
-                        }))
-                    }} onDrag={handleDrag} style={{
-                        left: `${playback.trackBallPosition}px`,
-                        top: `64.5px`
-                    }} className="absolute w-3 bg-white h-3 rounded-full"></div>
-                    :
-                    <></>
-            }
         </div>
     );
 }
