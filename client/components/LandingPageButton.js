@@ -1,6 +1,6 @@
 import React from "react";
 
-function LandingPageFooter() {
+function LandingPageButton() {
 
     return (
         <div style={{
@@ -19,7 +19,7 @@ function LandingPageFooter() {
     );
 }
 
-export default LandingPageFooter;
+export default LandingPageButton;
 
 
 /*
