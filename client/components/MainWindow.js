@@ -16,9 +16,9 @@ function MainWindow() {
     const mainWindow = useRef(null);
     const [loading, setLoading] = useState(true);
 
-    const [setWindowYScroll, profileLoading, playlistsLoading, featuredPlaylistsLoading, albumsLoading, topArtistsLoading, setAlbumsLoading, setFeaturedPlaylistsLoading] = useStore(
+    const [setWindowYScroll, profileLoading, playlistsLoading, featuredPlaylistsLoading, albumsLoading, topArtistsLoading, setAlbumsLoading, setFeaturedPlaylistsLoading, setFeaturedPlaylists] = useStore(
 
-        (state) => [state.setWindowYScroll, state.profileLoading, state.playlistsLoading, state.featuredPlaylistsLoading, state.albumsLoading, state.topArtistsLoading, state.setAlbumsLoading, state.setFeaturedPlaylistsLoading]
+        (state) => [state.setWindowYScroll, state.profileLoading, state.playlistsLoading, state.featuredPlaylistsLoading, state.albumsLoading, state.topArtistsLoading, state.setAlbumsLoading, state.setFeaturedPlaylistsLoading, state.setFeaturedPlaylists]
     );
     useEffect(() => {
         instance.get('me/albums', {
@@ -37,6 +37,7 @@ function MainWindow() {
             }
         }).then((response) => {
             setPlaylists(response.data.playlists.items);
+            setFeaturedPlaylists(response.data.playlists.items);
             setFeaturedPlaylistsLoading();
         }).catch(error => console.log(error));
 

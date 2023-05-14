@@ -20,7 +20,9 @@ const useStore = create((set) => ({
   headerProfileElement: null,
   setHeaderProfileElement: (elem) => set(() => ({ headerProfileElement: elem })),
   queue:[],
-  setQueue: (trackArr) => set(() => ({ queue: trackArr }))
+  setQueue: (trackArr) => set(() => ({ queue: trackArr })),
+  featuredPlaylists: null,
+  setFeaturedPlaylists: (playlists) => set(() => ({ featuredPlaylists: playlists }))
 
 }))
 

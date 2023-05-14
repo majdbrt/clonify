@@ -9,9 +9,10 @@ function Overview() {
     const [greeting, setGreeting] = useState("");
     const [loading, setLoading] = useState(true);
     const [topArtists, setTopArtists] = useState();
-    const [overViewColor, setOverViewColor, profileLoading, playlistsLoading, featuredPlaylistsLoading, albumsLoading, topArtistsLoading, setTopArtistsLoading] = useStore(
 
-        (state) => [state.overViewColor, state.setOverViewColor, state.profileLoading, state.playlistsLoading, state.featuredPlaylistsLoading, state.albumsLoading, state.topArtistsLoading, state.setTopArtistsLoading]
+    const [overViewColor, setOverViewColor, profileLoading, playlistsLoading, featuredPlaylistsLoading, albumsLoading, topArtistsLoading, setTopArtistsLoading, featuredPlaylists] = useStore(
+
+        (state) => [state.overViewColor, state.setOverViewColor, state.profileLoading, state.playlistsLoading, state.featuredPlaylistsLoading, state.albumsLoading, state.topArtistsLoading, state.setTopArtistsLoading, state.featuredPlaylists]
     );
 
     function evaluateGreeting() {
@@ -83,7 +84,12 @@ function Overview() {
                 <div className={`grid ${window?.innerWidth < 1190 ? 'grid-cols-2 grid-rows-3 gap-x-6 gap-y-3 h-56' : 'grid-cols-3 grid-rows-2 gap-x-5 gap-y-4 h-40'}   w-full  flex-1 `}>
 
                     <OverviewItem like={true} songTitle="Liked Songs" imgSrc={loveIconHighlighted} />
-                    {topArtists?.map(topArtist => <OverviewItem key={topArtist.id} songTitle={topArtist.name} imgSrc={topArtist.images[0]?.url} />)}
+                    {
+                        topArtists === null?
+                        topArtists?.map(topArtist => <OverviewItem key={topArtist.id} songTitle={topArtist.name} imgSrc={topArtist.images[0]?.url} />)
+                        :
+                        featuredPlaylists?.slice(0, 5).map(playlist => <OverviewItem key={playlist.id} songTitle={playlist.name} imgSrc={playlist?.images?.[0].url} />)
+                    }
                 </div>
             </div>
         );
