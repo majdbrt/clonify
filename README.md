@@ -1,9 +1,9 @@
  <img src="https://user-images.githubusercontent.com/54665027/236880821-574dfe7f-c793-4a8b-8d02-4c3663b556ab.png" width=""> 
 
- [Link to live app](hhttps://clonify-majdbrt.vercel.app/). The frontend and backend are hosted on Render.
+
  
  
- <span style="color:red">Please note due to free-tier hosting, the app might be slow to load.</span>
+ <span style="color:red">Disclaimer: this app is for learning purpose only, all content is owned by [Spotify](https://open.spotify.com/) </span>
 <br>
 <table>
 <tr>
@@ -31,6 +31,14 @@
 
 * Managed the state with Zustand and enabled multi-page routing for login and home page using Next.js router.
 
+  
+
+**A few restrictions to note from the Spotify API:**
+* Landing page content (new releases and featured playlists) cannot be leaded without having an access token, therefore logging in is necessary.
+* Since this web app is currently registered under the Development Mode on the Spotify Developer Dashboard, new users logging in to this web app need to be manually added to the User Management section on the Spotify Developer Dashboard.
+*  The Spotify API doesn't provide access to audio content
+ 
+ [Link to live app](https://clonify-majdbrt.vercel.app/). The web app is hosted on Vercel.
 
 ## App Overview (screenshots & animated gifs)
 <img src="https://github.com/majdbrt/clonify/assets/54665027/80dfc23c-94e6-43d2-b3c1-3bf5d1c219d4" >
@@ -45,3 +53,10 @@
 <img src="https://github.com/majdbrt/clonify/assets/54665027/cfc73c00-137b-4528-81fc-75d954049d0a" >
 
 <img src="https://github.com/majdbrt/clonify/assets/54665027/d604b4d3-c53f-496b-9fb5-8e980a25c460" >
+
+Installation Guide To Replicate the Results in the App Overview Section:
+* Create a [Spotify developer account](https://developer.spotify.com/) and create an app as documented.
+* Clone this repository or download it as ZIP.
+* Once in the client directory, run the following command `npm install`.
+* Create .env file in the client directory and add following environment variables: ``` NEXT_PUBLIC_REDIRECT_URI ``` and `NEXT_PUBLIC_CLIENT_ID`, where `NEXT_PUBLIC_REDIRECT_URI` is the Redirect URI and `NEXT_PUBLIC_CLIENT_ID` is the Client ID obtained from the first step.
+* run the following command to start the app: `npm run dev`
