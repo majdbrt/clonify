@@ -171,7 +171,7 @@ function PlayerRightContainer() {
                     </div>
                     <div onDrag={handleDrag} style={{
                         left: `${icons.sliderPosition - 6}px`,
-                        top: "-6px"
+                        top: "-5px"
                     }} onDragEnd={handleDrag} className={`absolute ${icons.sliderHover ? '' : 'hidden'} h-3 w-3 bg-white rounded-full`}>
 
                     </div>
