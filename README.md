@@ -54,7 +54,7 @@
 
 <img src="https://github.com/majdbrt/clonify/assets/54665027/d604b4d3-c53f-496b-9fb5-8e980a25c460" >
 
-Installation Guide To Replicate the Results in the App Overview Section:
+## Installation Guide To Replicate the Results in the App Overview Section:
 * Create a [Spotify developer account](https://developer.spotify.com/) and create an app as documented.
 * Clone this repository or download it as ZIP.
 * Once in the client directory, run the following command `npm install`.
