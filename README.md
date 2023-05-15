@@ -1,6 +1,6 @@
  <img src="https://user-images.githubusercontent.com/54665027/236880821-574dfe7f-c793-4a8b-8d02-4c3663b556ab.png" width=""> 
 
- [Link to live app](https://droplet-frontend.onrender.com/signup). The frontend and backend are hosted on Render.
+ [Link to live app](hhttps://clonify-majdbrt.vercel.app/). The frontend and backend are hosted on Render.
  
  
  <span style="color:red">Please note due to free-tier hosting, the app might be slow to load.</span>
@@ -32,10 +32,16 @@
 * Managed the state with Zustand and enabled multi-page routing for login and home page using Next.js router.
 
 
-## App Overview (animated gifs)
-<img src="https://user-images.githubusercontent.com/54665027/233181770-9906082f-6aee-4d12-b2e9-cd9799202648.gif" width="1500">
+## App Overview (screenshots & animated gifs)
+<img src="https://github.com/majdbrt/clonify/assets/54665027/80dfc23c-94e6-43d2-b3c1-3bf5d1c219d4" >
 
-<img src="https://user-images.githubusercontent.com/54665027/231789207-b06c6a85-b79e-4ea3-b2f1-fd7d023953a5.gif" width="1500">
+<img src="https://github.com/majdbrt/clonify/assets/54665027/68c19e8c-8dfc-48ce-9ddb-3d6ccc9483b2">
+<img src="https://github.com/majdbrt/clonify/assets/54665027/46d62ef8-3529-4826-ac9f-7d85d59c43d9">
+<img src="https://github.com/majdbrt/clonify/assets/54665027/0f70ea25-0d2f-445f-a5e6-e26889496a62" >
 
-<img src="https://user-images.githubusercontent.com/54665027/233187296-0894b616-75e2-460e-855d-f4c7711d083a.gif" width="1500">
 
+<img src="https://github.com/majdbrt/clonify/assets/54665027/68cf0149-02ea-4d21-abd0-56453ef2f281" >
+
+<img src="https://github.com/majdbrt/clonify/assets/54665027/cfc73c00-137b-4528-81fc-75d954049d0a" >
+
+<img src="https://github.com/majdbrt/clonify/assets/54665027/d604b4d3-c53f-496b-9fb5-8e980a25c460" >
