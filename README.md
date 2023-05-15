@@ -43,17 +43,24 @@
 ## App Overview (screenshots & animated gifs)
 <img src="https://github.com/majdbrt/clonify/assets/54665027/80dfc23c-94e6-43d2-b3c1-3bf5d1c219d4" >
 
+
 <img src="https://github.com/majdbrt/clonify/assets/54665027/68c19e8c-8dfc-48ce-9ddb-3d6ccc9483b2">
+
 
 <img src="https://github.com/majdbrt/clonify/assets/54665027/46d62ef8-3529-4826-ac9f-7d85d59c43d9">
 
+
 <img src="https://github.com/majdbrt/clonify/assets/54665027/0f70ea25-0d2f-445f-a5e6-e26889496a62" >
+
 
 <img src="https://github.com/majdbrt/clonify/assets/54665027/68cf0149-02ea-4d21-abd0-56453ef2f281" >
 
+
 <img src="https://github.com/majdbrt/clonify/assets/54665027/cfc73c00-137b-4528-81fc-75d954049d0a" >
 
+
 <img src="https://github.com/majdbrt/clonify/assets/54665027/d604b4d3-c53f-496b-9fb5-8e980a25c460" >
+
 
 ## Installation Guide To Replicate the Results in the App Overview Section:
 * Create a [Spotify developer account](https://developer.spotify.com/) and create an app as documented.
