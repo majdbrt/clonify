@@ -23,7 +23,7 @@ export default function Login() {
                 
                     console.log(response)
                     setIsLoading(false);
-                    router.push('/');
+                   // router.push('/home');
                
                 
             }).catch((error) => {

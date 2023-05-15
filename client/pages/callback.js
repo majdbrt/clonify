@@ -40,7 +40,7 @@ const callback = () => {
                     localStorage.setItem('access_token', data.access_token);
                     localStorage.setItem('refresh_token', data.refresh_token);
                 
-                    window.location.href = "/";
+                    window.location.href = "/home";
                 })
                 .catch(error => {
                     console.error('Error:', error);

@@ -15,10 +15,11 @@ function MainWindow() {
     const [playlists, setPlaylists] = useState([]);
     const mainWindow = useRef(null);
     const [loading, setLoading] = useState(true);
+    const [newReleases, setNewReleases] = useState([]);
 
-    const [setWindowYScroll, profileLoading, playlistsLoading, featuredPlaylistsLoading, albumsLoading, topArtistsLoading, setAlbumsLoading, setFeaturedPlaylistsLoading, setFeaturedPlaylists] = useStore(
+    const [setWindowYScroll, profileLoading, playlistsLoading, featuredPlaylistsLoading, albumsLoading, topArtistsLoading, setAlbumsLoading, setFeaturedPlaylistsLoading, setFeaturedPlaylists, newReleasesLoading, setNewReleasesLoading] = useStore(
 
-        (state) => [state.setWindowYScroll, state.profileLoading, state.playlistsLoading, state.featuredPlaylistsLoading, state.albumsLoading, state.topArtistsLoading, state.setAlbumsLoading, state.setFeaturedPlaylistsLoading, state.setFeaturedPlaylists]
+        (state) => [state.setWindowYScroll, state.profileLoading, state.playlistsLoading, state.featuredPlaylistsLoading, state.albumsLoading, state.topArtistsLoading, state.setAlbumsLoading, state.setFeaturedPlaylistsLoading, state.setFeaturedPlaylists, state.newReleasesLoading, state.setNewReleasesLoading]
     );
     useEffect(() => {
         instance.get('me/albums', {
@@ -29,6 +30,15 @@ function MainWindow() {
 
             setAlbums(response?.data?.items);
             setAlbumsLoading();
+        }).catch(error => console.log(error));
+
+        instance.get('browse/new-releases', {
+            params: {
+                limit: 6
+            }
+        }).then((response) => {
+            setNewReleases(response?.data?.albums?.items);
+            setNewReleasesLoading();
         }).catch(error => console.log(error));
 
         instance.get('browse/featured-playlists', {
@@ -44,12 +54,12 @@ function MainWindow() {
     }, []);
 
     useEffect(() => {
-        if (!profileLoading && !playlistsLoading && !featuredPlaylistsLoading && !albumsLoading && !topArtistsLoading) {
+        if (!profileLoading && !playlistsLoading && !featuredPlaylistsLoading && !albumsLoading && !topArtistsLoading && !newReleasesLoading) {
             setLoading(false);
         }
 
 
-    }, [profileLoading, playlistsLoading, featuredPlaylistsLoading, albumsLoading, topArtistsLoading]);
+    }, [profileLoading, playlistsLoading, featuredPlaylistsLoading, albumsLoading, topArtistsLoading, newReleasesLoading]);
 
 
     return (
@@ -77,20 +87,23 @@ function MainWindow() {
                         <>
                             <MainWindowSectionLoading />
                             <MainWindowSectionLoading />
+                            <MainWindowSectionLoading />
                         </>
                         :
                         <>
+                            <MainWindowSection sectionName="New releases" type='playlist' content={newReleases} />
+                            <MainWindowSection sectionName="Featured playlists" type='playlist' content={playlists} />
                             {
-                                albums.length? 
-                                <MainWindowSection sectionName="Your albums" type={'album'} content={albums} />
-                                : null
+                                albums.length ?
+                                    <MainWindowSection sectionName="Your albums" type={'album'} content={albums} />
+                                    : null
                             }
 
-                            <MainWindowSection sectionName="Featured playlists" type='playlist' content={playlists} />
+
                         </>
                     }
 
-                    <LinksSection/>
+                    <LinksSection />
 
                 </div>
 

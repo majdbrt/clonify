@@ -10,9 +10,9 @@ function Overview() {
     const [loading, setLoading] = useState(true);
     const [topArtists, setTopArtists] = useState();
 
-    const [overViewColor, setOverViewColor, profileLoading, playlistsLoading, featuredPlaylistsLoading, albumsLoading, topArtistsLoading, setTopArtistsLoading, featuredPlaylists] = useStore(
+    const [overViewColor, setOverViewColor, profileLoading, playlistsLoading, featuredPlaylistsLoading, albumsLoading, topArtistsLoading, setTopArtistsLoading, featuredPlaylists, newReleasesLoading, setNewReleasesLoading] = useStore(
 
-        (state) => [state.overViewColor, state.setOverViewColor, state.profileLoading, state.playlistsLoading, state.featuredPlaylistsLoading, state.albumsLoading, state.topArtistsLoading, state.setTopArtistsLoading, state.featuredPlaylists]
+        (state) => [state.overViewColor, state.setOverViewColor, state.profileLoading, state.playlistsLoading, state.featuredPlaylistsLoading, state.albumsLoading, state.topArtistsLoading, state.setTopArtistsLoading, state.featuredPlaylists, state.newReleasesLoading, state.setNewReleasesLoading]
     );
 
     function evaluateGreeting() {
@@ -28,11 +28,11 @@ function Overview() {
     }// evaluateGreeting
 
     useEffect(() => {
-        if (!profileLoading && !playlistsLoading && !featuredPlaylistsLoading && !albumsLoading && !topArtistsLoading) {
+        if (!profileLoading && !playlistsLoading && !featuredPlaylistsLoading && !albumsLoading && !topArtistsLoading &&!newReleasesLoading) {
             setLoading(false);
         }
 
-    }, [profileLoading, playlistsLoading, featuredPlaylistsLoading, albumsLoading, topArtistsLoading])
+    }, [profileLoading, playlistsLoading, featuredPlaylistsLoading, albumsLoading, topArtistsLoading, newReleasesLoading])
 
     useEffect(() => {
         const now = Date.now()

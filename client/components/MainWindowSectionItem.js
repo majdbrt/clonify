@@ -9,7 +9,7 @@ function MainWindowSectionItem(props) {
 
         (state) => [state.setQueue]
     )
-    function handleClick(){
+    function handleClick() {
         console.log(props.detail.tracks.items)
         setQueue(props.detail.tracks.items);
     }
@@ -20,8 +20,8 @@ function MainWindowSectionItem(props) {
                 <img className="rounded w-full h-full" src={props.imgSrc} alt="" />
                 {
                     isFocused && <div onClick={handleClick} className={`absolute bottom-2 right-2 bg-green-400 rounded-full flex w-12 h-12 shadow-lg shadow-neutral-800 m-auto hover:scale-105`}>
-                    <Image className="m-auto pl-1" src={playIcon} width={26} alt="" />
-                </div>
+                        <Image className="m-auto pl-1" src={playIcon} width={26} alt="" />
+                    </div>
                 }
             </div>
             <p className={`text-white whitespace-nowrap overflow-hidden  mt-3 mb-2 font-bold hover:underline`}>{props.name}</p>

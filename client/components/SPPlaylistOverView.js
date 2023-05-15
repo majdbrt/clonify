@@ -4,8 +4,10 @@ import instance from "../api/instance";
 import SPMainLink from "./SPMainLink";
 import SPPlaylistItem from "./SPPlaylistItem";
 import useStore from "../store/useStore";
+import { useRouter } from "next/router";
 
 function SPPlaylistOverview() {
+    const router = useRouter();
     const [isFocused, setIsFocused] = useState(true);
     const [playlists, setPlaylists] = useState(null);
     const [ playlistsLoading, setPlaylistsLoading] = useStore(
@@ -14,16 +16,21 @@ function SPPlaylistOverview() {
     );
 
     useEffect(() => {
-        instance.get('me/playlists', {
-            params: {
-                limit: 50,
-                offset: 0
-            }
-        }).then((response) => {
-            const playlists = response?.data?.items;
-            setPlaylists(playlists);
-            setPlaylistsLoading();
-        });
+        if(router.pathname === '/home'){
+            instance.get('me/playlists', {
+                params: {
+                    limit: 50,
+                    offset: 0
+                }
+            }).then((response) => {
+                const playlists = response?.data?.items;
+                setPlaylists(playlists);
+                setPlaylistsLoading();
+            }).catch((error)=>{
+                console.log(error);
+            });
+        }// if 
+        
     }, []);
 
     return (

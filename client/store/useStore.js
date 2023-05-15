@@ -22,8 +22,9 @@ const useStore = create((set) => ({
   queue:[],
   setQueue: (trackArr) => set(() => ({ queue: trackArr })),
   featuredPlaylists: null,
-  setFeaturedPlaylists: (playlists) => set(() => ({ featuredPlaylists: playlists }))
-
+  setFeaturedPlaylists: (playlists) => set(() => ({ featuredPlaylists: playlists })),
+  newReleasesLoading: true,
+  setNewReleasesLoading: () => set(() => ({ newReleasesLoading: false })),
 }))
 
 export default useStore;
