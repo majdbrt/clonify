@@ -56,8 +56,8 @@ export default function Login() {
             <div className="h-screen w-screen relative overflow-hidden">
                 <div className='flex flex-col h-full w-full'>
                     <div className="flex mx-auto pt-6 pb-7 cursor-pointer">
-                        <div className="bg-black rounded-full w-fit">
-                            <Image src={clonifyLogo} alt="" width={38} className="p-1 rotate-12" />
+                        <div className="bg-black rounded-full w-fit h-fit">
+                            <Image src={clonifyLogo} alt="" width={50}  className="p-1.5  rotate-12" />
 
                         </div>
                         <h1 className="text-black font-bold text-3xl my-auto px-2">Clonify</h1>
