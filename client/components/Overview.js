@@ -85,7 +85,7 @@ function Overview() {
 
                     <OverviewItem like={true} songTitle="Liked Songs" imgSrc={loveIconHighlighted} />
                     {
-                        topArtists === null?
+                        topArtists?
                         topArtists?.map(topArtist => <OverviewItem key={topArtist.id} songTitle={topArtist.name} imgSrc={topArtist.images[0]?.url} />)
                         :
                         featuredPlaylists?.slice(0, 5).map(playlist => <OverviewItem key={playlist.id} songTitle={playlist.name} imgSrc={playlist?.images?.[0].url} />)
