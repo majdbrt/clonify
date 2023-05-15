@@ -77,7 +77,7 @@ function SidePane() {
                     <SPMainLink2 imgSrc={installIconHighlighted} altSrc={installIcon} text='Install App' highlighted={false} width={28} />
                 </div>
             </div>
-            <div onDrag={handleDrag} onDragEnd={handleDragEnd} className="w-2 border-r-2 cursor-ew-resize h-full bg-zinc-950 border-zinc-950  hover:border-neutral-400"></div>
+            <div onDrag={handleDrag} onDragEnd={handleDragEnd} className="w-0 border-r-2 cursor-ew-resize h-full bg-zinc-950 border-zinc-950  hover:border-neutral-400"></div>
 
 
         </div>
