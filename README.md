@@ -29,7 +29,7 @@
 
 * Recreated the Spotify exerience by fetching the user's followed albums, tracks and playlists and used Tailwindcss to mirror the UI design of Spotify.
 
-* Managed the state with Zustand and enabled multi-page routing for login and home page using Next.js router.
+* Managed the state with Zustand and enabled routing for login and home page using Next.js router.
 
   
 
